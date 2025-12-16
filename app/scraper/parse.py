@@ -4,7 +4,6 @@ from app.schemas.car import CarBase, CarDetail
 
 
 def parse_base_car_info(html: str) -> list[CarBase]:
-    """Парсинг базовой информации о машинах со страницы списка."""
     soup = BeautifulSoup(html, "lxml")
     cars: list[CarBase] = []
 
@@ -34,7 +33,6 @@ def parse_base_car_info(html: str) -> list[CarBase]:
 
 
 def parse_detail_car_info(html: str, car: CarBase) -> CarDetail:
-    """Парсинг детальной информации о машине (без телефона)."""
     soup = BeautifulSoup(html, "lxml")
 
     def get_text(selector: str) -> str | None:
@@ -45,11 +43,6 @@ def parse_detail_car_info(html: str, car: CarBase) -> CarDetail:
     car_vin = get_text("div#badgesVinGrid div.badge-template span.common-text.ws-pre-wrap.badge")
     car_number = get_text("div.car-number.ua span")
 
-    # IDs для запроса телефона
-    # user_id, phone_id = extract_ids_from_html(html)
-    # auto_id = extract_auto_id_from_url(car.url)
-
-    # Images
     images: list[str] = []
     carousel = soup.select_one("div.carousel__viewport")
     if carousel:

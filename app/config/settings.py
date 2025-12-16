@@ -15,7 +15,6 @@ class AppSettings(BaseSettings):
     reload: bool = Field(True)
 
     start_url: str
-    #workers: int = 20
     concurrent_requests: int = Field(5)
 
     schedule_hour: int = Field(12)
@@ -58,10 +57,6 @@ class DbSettings(BaseSettings):
     @property
     def database_url(self) -> str:
         return f"postgresql+asyncpg://{self.user}:{self.password}@{self.host}:{self.port}/{self.db}"
-
-    @property
-    def pg_dump_url(self) -> str:
-        return f"postgresql://{self.user}:{self.password}@{self.host}:{self.port}/{self.db}"
 
 
 class Settings(BaseSettings):

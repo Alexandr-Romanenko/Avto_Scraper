@@ -1,5 +1,6 @@
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
+
 from app.scheduler.jobs import scrape_job, dump_db_job
 from app.config.settings import settings
 

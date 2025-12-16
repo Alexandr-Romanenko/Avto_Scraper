@@ -43,39 +43,3 @@ class CarDetailScraper:
             user_id=user_id,
             phone_id=phone_id,
         )
-
-
-
-# async def scrape_car(
-#     car: CarBase,
-#     http: aiohttp.ClientSession,
-#     db: AsyncSession,
-#     phone_client: PhoneClient,
-# ):
-#     html = await fetch(http, car.url)
-#     if not html:
-#         return
-#
-#     detail = parse_detail_car_info(html, car)
-#
-#     if detail.user_id and detail.phone_id:
-#         detail.phone_number = await phone_client.get_phone(
-#             http,
-#             detail.auto_id,
-#             detail.user_id,
-#             detail.phone_id,
-#         )
-#
-#     car_create = CarCreate(**detail.model_dump(exclude={"auto_id", "user_id", "phone_id"}))
-#
-#     await save_car(db, car_create)
-
-
-# async def scrape_car(car: CarBase, http: aiohttp.ClientSession, db: AsyncSession):
-#     """Скрейпинг деталей одной машины и сохранение в БД."""
-#     print("📄 fetch car:", car.url)
-#     html = await fetch(http, car.url)
-#     if not html:
-#         return
-#     car_full = parse_detail_car_info(html, car)
-#     await save_car(db, car_full)

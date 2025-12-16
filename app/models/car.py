@@ -1,6 +1,4 @@
-from typing import Optional
 from datetime import datetime
-
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import TIMESTAMP, Index
 
@@ -31,5 +29,3 @@ class Car(Base):
             unique=True
         ),
     )
-
-
