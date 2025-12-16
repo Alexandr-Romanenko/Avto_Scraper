@@ -7,7 +7,7 @@ services:
       - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-      - ./dumps:/dumps    # монтируем локальную папку для дампов
+      - ./dumps:/dumps
     environment:
        - TZ=Europe/Kyiv
     env_file:
